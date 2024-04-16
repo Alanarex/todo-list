@@ -1,0 +1,53 @@
+.task {
+    background: #ffffff;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.task.done h2,
+.task.done p {
+    text-decoration: line-through;
+    color: #999;
+}
+
+.task-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.task button {
+    padding: 5px 10px;
+    margin-left: 10px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.task button:nth-child(2),
+.task button:nth-child(3) {
+    background-color: #28a745;
+    color: white;
+}
+
+.task button:nth-child(3) {
+    background-color: #dc3545;
+}
+
+.task .tags-container {
+    margin-top: 10px;
+}
+
+.task .tag {
+    display: inline-block;
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin-right: 5px;
+    font-size: 12px;
+}

@@ -1,0 +1,34 @@
+.task-input {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+}
+
+.task-input input[type="text"],
+.task-input select {
+    width: 100%;
+    padding: 8px;
+    border: 2px solid #007BFF;
+    border-radius: 5px;
+}
+
+.task-input .tag-select {
+    height: auto;
+    max-height: 100px;
+    /* Allows for scrolling */
+    overflow-y: auto;
+}
+
+.task-input button {
+    padding: 10px 15px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.task-input button:hover {
+    background-color: #218838;
+}

@@ -1,0 +1,27 @@
+.tag-input {
+    margin-top: 10px;
+}
+
+.tag-input input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    border: 2px solid #0069d9;
+    border-radius: 5px;
+    color: #fff;
+    background: transparent;
+}
+
+.tag-input button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.tag-input button:hover {
+    background-color: #218838;
+}
