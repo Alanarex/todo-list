@@ -46,6 +46,17 @@ const App = () => {
     setTags(tags.filter((tag) => tag !== tagToRemove));
   };
 
+  const onRemoveTag = (taskId, tagId) => {
+    setTasks(tasks.map(task => {
+      if (task.id === taskId) {
+        const filteredTags = task.tags.filter(tag => tag.tagId !== tagId);
+        return { ...task, tags: filteredTags };
+      }
+      return task;
+    }));
+  }
+
+
   return (
     <div className="app">
       <Sidebar tags={tags} onAddTag={addTag} onDeleteTag={deleteTag} />
@@ -55,6 +66,7 @@ const App = () => {
           tasks={tasks}
           onDelete={deleteTask}
           onToggleDone={markTaskAsDone}
+          onRemoveTag={onRemoveTag}
         />
       </div>
     </div>

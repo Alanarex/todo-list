@@ -1,3 +1,11 @@
+form div.inputs {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+
 .tag-input {
     margin-top: 10px;
 }

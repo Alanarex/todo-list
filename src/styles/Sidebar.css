@@ -22,7 +22,7 @@
 
 .sidebar .tag .delete-tag {
     margin-left: 10px;
-    color: #dc3545;
+    color: #ff0000;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 20px;
 }

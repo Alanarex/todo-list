@@ -2,23 +2,45 @@ import React, { useState } from "react";
 import "../styles/TagInput.css";
 
 const TagInput = ({ onAddTag }) => {
-  const [tag, setTag] = useState("");
+  const [title, setTitle] = useState("");
+  const [color, setColor] = useState("#000000");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!tag) return;
-    onAddTag(tag);
-    setTag("");
+    if (!title) return;
+    onAddTag({
+      title: title,
+      color: color,
+    });
+    setTitle("");
+    setColor("#000000");
   };
 
   return (
     <form onSubmit={handleSubmit} className="tag-input">
-      <input
-        type="text"
-        placeholder="Add new tag"
-        value={tag}
-        onChange={(e) => setTag(e.target.value)}
-      />
+      <div className="inputs">
+        <input
+          style={{
+            height: '25px',
+            width: '30px',
+            backgroundColor: color,
+            borderRadius: '50%',
+            display: 'inline-block',
+          }}
+          type="color"
+          id="head"
+          name="head"
+          value={color}
+          onChange={(e) => setColor(e.target.value)}
+          required
+        />
+        <input
+          type="text"
+          placeholder="Add new tag"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+        />
+      </div>
       <button type="submit">Add Tag</button>
     </form>
   );

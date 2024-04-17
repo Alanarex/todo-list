@@ -1,7 +1,7 @@
 import React from "react";
 import "../styles/Task.css";
 
-const Task = ({ task, onDelete, onToggleDone }) => {
+const Task = ({ task, onDelete, onToggleDone, onRemoveTag }) => {
   return (
     <div className={`task ${task.done ? "done" : ""}`}>
       <div className="task-header">
@@ -11,9 +11,10 @@ const Task = ({ task, onDelete, onToggleDone }) => {
       </div>
       <p>{task.description}</p>
       <div className="tags-container">
-        {task.tags.map((tag, index) => (
-          <span key={index} className="tag">
-            {tag}
+        {task.tags.map((tag) => (
+          <span key={tag.tagId} className="tag" style={{ backgroundColor: tag.color }}>
+            {tag.title}
+            <button onClick={() => onRemoveTag(task.id, tag.tagId)} className="delete-tag">X</button>
           </span>
         ))}
       </div>
