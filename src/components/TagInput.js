@@ -9,6 +9,7 @@ const TagInput = ({ onAddTag }) => {
     e.preventDefault();
     if (!title) return;
     onAddTag({
+      id: Date.now(),
       title: title,
       color: color,
     });
@@ -21,11 +22,11 @@ const TagInput = ({ onAddTag }) => {
       <div className="inputs">
         <input
           style={{
-            height: '25px',
-            width: '30px',
+            height: "25px",
+            width: "30px",
             backgroundColor: color,
-            borderRadius: '50%',
-            display: 'inline-block',
+            borderRadius: "50%",
+            display: "inline-block",
           }}
           type="color"
           id="head"

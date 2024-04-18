@@ -22,6 +22,7 @@ const App = () => {
 
   const addTask = (task) => {
     setTasks([...tasks, task]);
+    console.log(tasks);
   };
 
   const deleteTask = (id) => {
@@ -46,16 +47,20 @@ const App = () => {
     setTags(tags.filter((tag) => tag !== tagToRemove));
   };
 
-  const onRemoveTag = (taskId, tagId) => {
-    setTasks(tasks.map(task => {
-      if (task.id === taskId) {
-        const filteredTags = task.tags.filter(tag => tag.tagId !== tagId);
-        return { ...task, tags: filteredTags };
-      }
-      return task;
-    }));
-  }
-
+  const onRemoveTag = (task, tag) => {
+    setTasks((currentTasks) =>
+      currentTasks.map((t) => {
+        if (t === task) {
+          // Filter out the tag from the task's tags array
+          const filteredTags = t.tags.filter(
+            (tagg) => tagg.tagId !== tag.tagId
+          );
+          return { ...t, tags: filteredTags };
+        }
+        return t;
+      })
+    );
+  };
 
   return (
     <div className="app">

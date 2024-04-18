@@ -12,10 +12,25 @@ const Task = ({ task, onDelete, onToggleDone, onRemoveTag }) => {
       <p>{task.description}</p>
       <div className="tags-container">
         {task.tags.map((tag) => (
-          <span key={tag.tagId} className="tag" style={{ backgroundColor: tag.color }}>
-            {tag.title}
-            <button onClick={() => onRemoveTag(task.id, tag.tagId)} className="delete-tag">X</button>
-          </span>
+          <div key={tag.tagId} className="tag">
+            <span
+              style={{
+                height: "25px",
+                width: "25px",
+                backgroundColor: tag.color,
+                borderRadius: "50%",
+                display: "inline-block",
+                marginRight: "5px",
+              }}
+            ></span>
+            <span>{tag.title}</span>
+            <button
+              onClick={() => onRemoveTag(task, tag)}
+              className="delete-tag"
+            >
+              X
+            </button>
+          </div>
         ))}
       </div>
     </div>
