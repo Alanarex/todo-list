@@ -56,3 +56,23 @@
     border-radius: 5px;
     cursor: pointer;
 }
+
+.task .delete-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: inherit;
+    font-size: 1.2em;
+}
+
+.task .delete-button:hover,
+.task .delete-button:focus {
+    color: red;
+}
+
+/* Optional: styles for when a task is marked as done */
+.task.done h2,
+.task.done p {
+    text-decoration: line-through;
+    color: #bbb;
+}

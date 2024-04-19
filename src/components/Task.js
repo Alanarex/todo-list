@@ -1,36 +1,40 @@
 import React from "react";
 import "../styles/Task.css";
+import Tag from "./Tag";
 
 const Task = ({ task, onDelete, onToggleDone, onRemoveTag }) => {
   return (
     <div className={`task ${task.done ? "done" : ""}`}>
       <div className="task-header">
         <h2>{task.title}</h2>
-        <button onClick={() => onToggleDone(task.id)}>Done</button>
-        <button onClick={() => onDelete(task.id)}>Delete</button>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: "15px",
+          }}
+        >
+          <label>
+            <input
+              type="checkbox"
+              checked={task.done}
+              onChange={() => onToggleDone(task.id)}
+              style={{ marginRight: "5px" }}
+            />
+            Done
+          </label>
+          <button onClick={() => onDelete(task.id)} className="delete-button">
+            <i className="fa fa-trash" aria-hidden="true"></i>{" "}
+            {/* Using FontAwesome icon */}
+          </button>
+        </div>
       </div>
       <p>{task.description}</p>
       <div className="tags-container">
         {task.tags.map((tag) => (
-          <div key={tag.tagId} className="tag">
-            <span
-              style={{
-                height: "25px",
-                width: "25px",
-                backgroundColor: tag.color,
-                borderRadius: "50%",
-                display: "inline-block",
-                marginRight: "5px",
-              }}
-            ></span>
-            <span>{tag.title}</span>
-            <button
-              onClick={() => onRemoveTag(task, tag)}
-              className="delete-tag"
-            >
-              X
-            </button>
-          </div>
+          <Tag key={tag.id} tag={tag} task={task} onRemoveTag={onRemoveTag} />
         ))}
       </div>
     </div>

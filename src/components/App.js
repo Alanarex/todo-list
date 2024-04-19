@@ -38,28 +38,34 @@ const App = () => {
   };
 
   const addTag = (tag) => {
-    if (!tags.includes(tag)) {
-      setTags([...tags, tag]);
-    }
+    let canAddTag = true;
+    tags.forEach((existingTag) => {
+      if (existingTag.title == tag.title) {
+        canAddTag = false;
+      }
+    });
+    if (canAddTag) setTags([...tags, tag]);
+    else console.log("already existing tag");
   };
 
   const deleteTag = (tagToRemove) => {
     setTags(tags.filter((tag) => tag !== tagToRemove));
   };
 
-  const onRemoveTag = (task, tag) => {
-    setTasks((currentTasks) =>
-      currentTasks.map((t) => {
-        if (t === task) {
-          // Filter out the tag from the task's tags array
-          const filteredTags = t.tags.filter(
-            (tagg) => tagg.tagId !== tag.tagId
-          );
-          return { ...t, tags: filteredTags };
-        }
-        return t;
-      })
-    );
+  const removeTagFromArray = (tags, tagToRemove) => {
+    return tags.filter((tag) => tag !== tagToRemove);
+  };
+
+  const onRemoveTag = (thatTask, tag) => {
+    let newTasks = [];
+    tasks.forEach((task) => {
+      if (task === thatTask) {
+        task.tags = removeTagFromArray(task.tags, tag);
+      }
+      newTasks.push(task);
+    });
+
+    setTasks(newTasks);
   };
 
   return (

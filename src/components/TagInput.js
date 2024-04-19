@@ -7,12 +7,13 @@ const TagInput = ({ onAddTag }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!title) return;
-    onAddTag({
-      id: Date.now(),
+    if (!title) return; // Prevents adding empty tags
+    const newTag = {
       title: title,
       color: color,
-    });
+      Id: Date.now(),
+    };
+    onAddTag(newTag);
     setTitle("");
     setColor("#000000");
   };
