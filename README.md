@@ -1,70 +1,56 @@
-# Getting Started with Create React App
+# Todo List
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+> A small React to-do app with colour-coded tags. Everything is stored in the browser, no backend.
 
-## Available Scripts
+![React](https://img.shields.io/badge/React-18-61DAFB?logo=react&logoColor=white)
+![Create React App](https://img.shields.io/badge/Create_React_App-5-09D3AC?logo=createreactapp&logoColor=white)
+![Tests](https://img.shields.io/badge/tests-Jest_+_Testing_Library-C21325?logo=jest&logoColor=white)
+![License](https://img.shields.io/badge/license-MIT-green)
 
-In the project directory, you can run:
+**Résumé (FR)** : petite application de liste de tâches en React avec des tags colorés. Les tâches et les tags sont enregistrés dans le navigateur (`localStorage`), sans serveur.
 
-### `npm start`
+## Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Add a task with a title, a description and any number of tags (`react-select` multi-select).
+- Mark a task as done, delete it.
+- Create and delete coloured tags from the sidebar (tag titles are unique).
+- Remove a tag from a single task.
+- Tasks and tags persist across reloads via `localStorage`.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Architecture
 
-### `npm test`
+```
+src/components/   App (state + localStorage), Header, Sidebar, TaskInput, TaskList, Task, Tag, TagInput
+src/styles/       one CSS file per component
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+`App` owns the `tasks` and `tags` state and passes handlers down; there is no router and no backend.
 
-### `npm run build`
+## Getting started
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Requirements: Node.js 18+ and npm.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```sh
+git clone https://github.com/Alanarex/todo-list.git
+cd todo-list
+npm install
+npm start          # http://localhost:3000
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Tests and build
 
-### `npm run eject`
+```sh
+CI=true npm test -- --watchAll=false   # 4 tests (persistence, done toggle, delete, tag removal)
+npm run build
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## What it demonstrates
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- React function components and hooks (`useState`, `useEffect`).
+- State lifting and immutable updates.
+- Client-side persistence with `localStorage`.
+- Component tests with React Testing Library.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## License
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+MIT, see [LICENSE](LICENSE).
