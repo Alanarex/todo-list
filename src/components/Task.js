@@ -34,7 +34,7 @@ const Task = ({ task, onDelete, onToggleDone, onRemoveTag }) => {
       <p>{task.description}</p>
       <div className="tags-container">
         {task.tags.map((tag) => (
-          <Tag key={tag.id} tag={tag} task={task} onRemoveTag={onRemoveTag} />
+          <Tag key={tag.title} tag={tag} task={task} onRemoveTag={onRemoveTag} />
         ))}
       </div>
     </div>

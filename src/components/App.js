@@ -22,7 +22,6 @@ const App = () => {
 
   const addTask = (task) => {
     setTasks([...tasks, task]);
-    console.log(tasks);
   };
 
   const deleteTask = (id) => {
@@ -40,32 +39,26 @@ const App = () => {
   const addTag = (tag) => {
     let canAddTag = true;
     tags.forEach((existingTag) => {
-      if (existingTag.title == tag.title) {
+      if (existingTag.title === tag.title) {
         canAddTag = false;
       }
     });
     if (canAddTag) setTags([...tags, tag]);
-    else console.log("already existing tag");
   };
 
   const deleteTag = (tagToRemove) => {
     setTags(tags.filter((tag) => tag !== tagToRemove));
   };
 
-  const removeTagFromArray = (tags, tagToRemove) => {
-    return tags.filter((tag) => tag !== tagToRemove);
-  };
-
-  const onRemoveTag = (thatTask, tag) => {
-    let newTasks = [];
-    tasks.forEach((task) => {
-      if (task === thatTask) {
-        task.tags = removeTagFromArray(task.tags, tag);
-      }
-      newTasks.push(task);
-    });
-
-    setTasks(newTasks);
+  const onRemoveTag = (thatTask, tagToRemove) => {
+    // Tag titles are unique (see addTag); build new objects instead of mutating state
+    setTasks(
+      tasks.map((task) =>
+        task.id === thatTask.id
+          ? { ...task, tags: task.tags.filter((tag) => tag.title !== tagToRemove.title) }
+          : task
+      )
+    );
   };
 
   return (
