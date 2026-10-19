@@ -3,7 +3,6 @@ import React from "react";
 const Tag = ({ tag, onRemoveTag, task = null }) => {
   return (
     <div
-      key={tag.tagId}
       className="tag"
       style={{
         display: "flex",
